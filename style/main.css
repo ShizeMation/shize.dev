@@ -1,6 +1,7 @@
 .front-text {
     position: fixed;
     font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
     color: white;
     opacity: 0.75;
     z-index: 1;
@@ -15,16 +16,20 @@
 #subtitle {
     left: 30px;
     top: 50px;
-    font-weight: bold;
+}
+
+#email {
+    left: 30px;
+    top: 70px;
 }
 
 #main-canvas {
     position: fixed;
     left: 0px;
     top: 0px;
-    background-color: rgb(20, 20, 20);
+    background-color: black;
 }
 
 ::selection {
-    background: rgba(0, 0, 0, 0);
+    background: transparent;
 }

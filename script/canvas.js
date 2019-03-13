@@ -1,5 +1,5 @@
 // get canvas element
-var canvas = document.getElementById("main-canvas");
+const canvas = document.getElementById("main-canvas");
 
 // canvas update on window resize
 function resizeCanvas() {
@@ -58,28 +58,58 @@ function Ball(x, y) {
     };
 }
 
-// balls are stored in the array
-var balls = [];
+// track mouse location
+let mouseX = 0;
+let mouseY = 0;
+canvas.addEventListener("mousemove", function(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
 
-// user interaction
-function spawnBall(e) {
+// ball spawner
+let balls = [];
+function spawnBall() {
     if (balls.length > 100) {
         balls.shift();
     }
-    balls.push(new Ball(e.clientX, e.clientY));
+    balls.push(new Ball(mouseX, mouseY));
 }
-canvas.addEventListener("mousemove", spawnBall);
+
+// user interaction
+let id = null;
+canvas.addEventListener("mousedown", function() {
+    id = setInterval(spawnBall, 10);
+});
+canvas.addEventListener("mouseup", function() {
+    clearInterval(id);
+});
+canvas.addEventListener("mouseleave", function() {
+    clearInterval(id);
+});
 canvas.addEventListener("click", spawnBall);
 
 // animator
 function animate() {
     requestAnimationFrame(animate);
-    if (Date.now() % 120000 < 60000) {
-        c.clearRect(0, 0, canvas.width, canvas.height);
+    let t = Date.now() % 20000;
+    if (t < 10000) {
+        if (t < 2000) {
+            c.fillStyle = "rgba(0, 0, 0,"+(t/2000)+")";
+            c.fillRect(0, 0, canvas.width, canvas.height);
+        }
+        else {
+            c.clearRect(0, 0, canvas.width, canvas.height);
+        }
     }
-    for (var i = 0; i < balls.length; i++) {
-        balls[i].draw();
-        balls[i].update();
+    else if (t < 12000) {
+        c.fillStyle = "rgba(0, 0, 0,"+(1-(t-10000)/2000)+")";
+        c.fillRect(0, 0, canvas.width, canvas.height);
     }
+    balls.forEach(b => {
+        b.draw();
+        b.update();
+    });
+    c.fillStyle = "rgba(0, 0, 0, 0.4)";
+    c.fillRect(14, 14, 300, 100);
 }
 animate();
