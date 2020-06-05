@@ -6,6 +6,7 @@
     opacity: 0.75;
     z-index: 1;
     pointer-events: none;
+    white-space: nowrap;
 }
 
 #title {
@@ -28,6 +29,7 @@
     left: 0px;
     top: 0px;
     background-color: black;
+    cursor: pointer;
 }
 
 ::selection {
