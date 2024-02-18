@@ -1,86 +1,68 @@
 /* Canvas layers */
 
-canvas {
+#surface {
     position: fixed;
     left: 0px;
     top: 0px;
-}
-
-#surface {
     background-color: black;
     cursor: pointer;
 }
 
-#overlay {
+/* Content */
+
+#content {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1em;
+    min-width: 18em;
+    max-width: 24em;
     pointer-events: none;
 }
 
-/* Header box and stuff inside */
-
-#header {
-    position: fixed;
-    pointer-events: none;
+#content > * {
+    margin-bottom: 1em;
+    padding: 1em;
     background-color: #252525;
     opacity: 0.75;
-    left: 30px;
-    top: 30px;
-    width: 320px;
-    height: 110px;
-}
-
-.top-text {
-    position: absolute;
-    font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: white;
 }
 
+/* Header box and stuff inside */
+
+#header > * {
+    color: inherit;
+}
+
 #title {
     font-size: 2em;
-    left: 15px;
-    top: 10px;
+    margin: 0 0 0.5em 0;
 }
 
 #subtitle {
-    left: 15px;
-    top: 60px;
+    font-size: 1em;
+    margin: 0;
 }
 
 #email {
     pointer-events: all;
-    left: 15px;
-    top: 80px;
 }
 
 #email:hover {
-    color: lightgreen;
+    color: lightyellow;
     text-decoration: underline;
 }
 
 /* Links and buttons */
 
-.subdir {
-    display: block;
-    position: fixed;
-    padding-left: 15px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-    color: white;
-    background-color: #252525;
-    opacity: 0.75;
+#content > a {
+    pointer-events: all;
 }
 
-.subdir:hover {
+#content > a:hover {
     background-color: #404040;
     opacity: 0.9;
-}
-
-#btn-cells {
-    left: 30px;
-    top: 150px;
-    width: 305px;
-    height: 40px;
-    line-height: 40px;
 }
 
 /* Other */

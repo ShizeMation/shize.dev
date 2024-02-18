@@ -1,13 +1,10 @@
 // get canvas element
 const surface = document.getElementById("surface");
-const overlay = document.getElementById("overlay");
 
 // canvas update on window resize
 let resizeCanvas = () => {
     surface.width = window.innerWidth;
     surface.height = window.innerHeight;
-    overlay.width = window.innerWidth;
-    overlay.height = window.innerHeight;
 }
 resizeCanvas();
 window.addEventListener("resize", resizeCanvas);
@@ -22,7 +19,6 @@ function Ball(x, y) {
     this.y = y;
     
     this.r = Math.random() + 0.1;
-    this.q = Math.random() * 4 + 1;
     
     this.dx = 0;
     this.dy = 0;
@@ -48,19 +44,19 @@ let updateBall = (ball) => {
 
     if (ball.x + ball.r > surface.width) {
         ball.x = surface.width - ball.r;
-        ball.dx = -ball.dx/ball.q;
+        ball.dx = -ball.dx/10;
     }
     else if (ball.x - ball.r < 0) {
         ball.x = ball.r;
-        ball.dx = -ball.dx/ball.q;
+        ball.dx = -ball.dx/10;
     }
     if (ball.y + ball.r > surface.height) {
         ball.y = surface.height - ball.r;
-        ball.dy = -ball.dy/ball.q;
+        ball.dy = -ball.dy/10;
     }
     else if (ball.y - ball.r < 0) {
         ball.y = ball.r;
-        ball.dy = -ball.dy/ball.q;
+        ball.dy = -ball.dy/10;
     }
 };
 
