@@ -20,6 +20,8 @@ function Ball(x, y) {
     
     this.r = Math.random() + 0.1;
     
+    this.s = (Math.random() > 0.7)? 5 : 10;
+
     this.dx = 0;
     this.dy = 0;
     
@@ -39,8 +41,8 @@ let updateBall = (ball) => {
     ball.x += ball.dx;
     ball.y += ball.dy;
     
-    ball.dx += (Math.random() - 0.5) / 10;
-    ball.dy += (Math.random() - 0.5) / 10;
+    ball.dx += (Math.random() - 0.5) / ball.s;
+    ball.dy += (Math.random() - 0.5) / ball.s;
 
     if (ball.x + ball.r > surface.width) {
         ball.x = surface.width - ball.r;
